@@ -1,0 +1,41 @@
+{
+  "name": "graphql-dockerized",
+  "version": "1.0.0",
+  "description": "Sample application using GraphQL",
+  "main": "app.js",
+  "scripts": {
+    "start": "node dist/app.js",
+    "build": "./node_modules/.bin/babel app -d dist",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down --remove-orphans",
+    "app:start": "npm run build && npm run docker:up",
+    "app:stop": "npm run docker:down"
+  },
+  "keywords": [
+    "it-economics GmbH",
+    "it-e Conference Day",
+    "GraphQL",
+    "node.js"
+  ],
+  "author": "dlorian",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.1",
+    "express-graphql": "^0.6.4",
+    "faker": "^4.1.0",
+    "graphql": "^0.10.0",
+    "graphql-tools": "^0.11.0",
+    "lodash": "^4.17.4",
+    "mongodb": "^2.2.26"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.10.0",
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "standard": "^10.0.3"
+  }
+}
