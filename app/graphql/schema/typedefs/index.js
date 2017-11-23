@@ -20,7 +20,7 @@ const typeDefs = [`
         lastName: String!
         birthday: String
         address: Address,
-        followers(first: Int): [User]!
+        followers(first: Int): [User]
     }
 
     type Address {

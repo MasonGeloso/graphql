@@ -5,8 +5,10 @@ const insert = function(collection, db, docToAdd, next) {
     db.collection(collection).insertOne(docToAdd, next);
 };
 
-const update = function(collection, db, docToUpdate, next) {
-    db.collection(collection).findOneAndReplace({ 'id': docToUpdate.id }, docToUpdate, (err, result) => next(err, result.value));
+const update = function(collection, db, replacement, next) {
+    db.collection(collection).findOneAndReplace({ 'id': replacement.id }, replacement, { returnOriginal: false }, (err, result) => {
+        return (err) ? next(err) : next(null, result.value);
+    });
 };
 
 const findAll = function(collection, db, next) {
@@ -19,7 +21,7 @@ const findByIds = function(collection, db, options, next) {
 };
 
 const findById = function(collection, db, options, next) {
-    db.collection(collection).findOne({ id: options.id }).then((doc) => next(null, doc));
+    db.collection(collection).findOne(options).then((doc) => next(null, doc));
 };
 
 const findImpl = function(collection, db, query, options, next) {
@@ -32,6 +34,11 @@ const findImpl = function(collection, db, query, options, next) {
 
     let docs = [];
     cursor.each((err, doc) => {
+        if (err) {
+            return next(err);
+        }
+
+
         if (doc != null) {
             docs.push(doc);
         } else {

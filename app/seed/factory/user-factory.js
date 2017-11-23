@@ -1,8 +1,5 @@
 const faker = require('faker');
 
-/**
- * Number of created users.
- */
 const _userCount = 15;
 
 const _getRandomNumber = (min, max) => {
@@ -12,7 +9,7 @@ const _getRandomNumber = (min, max) => {
 const getCount = () => _userCount;
 
 const getRandomId = () => {
-    return _getRandomNumber(1, _userCount);
+    return ''+_getRandomNumber(1, _userCount);
 };
 
 const getRandomIds = (id, minUsers, maxUsers) => {
@@ -30,12 +27,12 @@ const getRandomIds = (id, minUsers, maxUsers) => {
 
 const create = (id) => {
     return {
-        'id': id,
+        'id': `${id}`,
         'userName': faker.internet.userName(),
         'firstName': faker.name.firstName(),
         'lastName': faker.name.lastName(),
         'birthday': faker.date.past(),
-        'address': id,
+        'address': `${id}`,
         'followers': getRandomIds(id, 1, 6)
     };
 };

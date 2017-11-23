@@ -12,6 +12,7 @@ class PromiseWrapper {
 
     _promiseCallback(err, result) {
         if (err) {
+            console.error(err);
             this.reject(err);
         } else {
             this.resolve(result);
@@ -23,7 +24,13 @@ class PromiseWrapper {
         const promiseHandler = function(resolve, reject) {
             this.resolve = resolve;
             this.reject = reject;
-            this.fn.apply(null, this.args);
+            
+            try {
+                this.fn.apply(null, this.args);
+            } catch (e) {
+                console.error(err);
+                reject(e);
+            }
         };
 
         return new Promise(promiseHandler.bind(this));

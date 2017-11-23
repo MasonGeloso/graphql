@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/app.js",
     "build": "./node_modules/.bin/babel app -d dist",
-    "docker:up": "docker-compose up -d",
+    "docker:up": "docker-compose up",
     "docker:down": "docker-compose down --remove-orphans",
     "app:start": "npm run build && npm run docker:up",
     "app:stop": "npm run docker:down"

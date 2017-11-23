@@ -1,5 +1,6 @@
 const mutations = [`
     createUser(
+        id: ID!
         userName: String!
         firstName: String!
         lastName: String!
@@ -11,6 +12,7 @@ const mutations = [`
     ): User
 
     createPost(
+        id: ID!
         title: String!
         text: String!
         author: ID!

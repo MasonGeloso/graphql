@@ -6,6 +6,10 @@ const findAll = function(done) {
     db.findAll(COLLECTION, done);
 };
 
+const findById = function(options, done) {
+    db.findById(COLLECTION, options, done);
+};
+
 const findByIds = function(ids, done) {
     db.findByIds(COLLECTION, ids, done);
 };
@@ -18,4 +22,4 @@ const clear = function(done) {
     db.clear(COLLECTION, done);
 };
 
-module.exports = { findAll, findByIds, add, clear };
+module.exports = { findAll, findById, findByIds, add, clear };

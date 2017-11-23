@@ -1,7 +1,7 @@
 const { makeExecutableSchema } = require('graphql-tools');
 
 const queries = require('./queries/index.js');
-const typeDefs = require('./typeDefs/index.js');
+const typeDefs = require('./typedefs/index.js');
 const mutations = require('./mutations/index.js');
 const resolvers = require('./resolvers/index.js');
 

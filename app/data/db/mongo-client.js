@@ -4,12 +4,7 @@ const MongoClient = require('mongodb').MongoClient;
 // TODO Set via env var
 const DB_NAME = 'graphQL';
 
-let url;
-if (process.env.MONGO_HOST && process.env.MONGO_PORT) {
-    url = util.format('mongodb://%s:%d/%s', process.env.MONGO_HOST, process.env.MONGO_PORT, DB_NAME);
-} else {
-    url = util.format('mongodb://mongo:27017/%s', DB_NAME);
-}
+const url = util.format('mongodb://mongo:27017/%s', DB_NAME);
 
 exports.execute = function(fn, done) {
     MongoClient.connect(url, (err, db) => {

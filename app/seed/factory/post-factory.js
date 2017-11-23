@@ -12,7 +12,7 @@ const getCount = () => _postCount;
 const getRandomIds = (id, min, max) => {
     const posts = new Set();
     for (let i = 0; i < _getRandomNumber(min, max); i++) {
-        posts.add(_getRandomNumber(1, _postCount));
+        posts.add(''+_getRandomNumber(1, _postCount));
     }
     // Spread it to an array
     return [...posts];
@@ -20,7 +20,7 @@ const getRandomIds = (id, min, max) => {
 
 const create = (id) => {
     return {
-        'id': id,
+        'id': `${id}`,
         'title': faker.lorem.sentence(),
         'text': faker.lorem.paragraph(),
         'author': userFactory.getRandomId()
